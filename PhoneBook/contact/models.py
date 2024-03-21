@@ -4,6 +4,7 @@ from django.conf import settings
 
 # Create your models here.
 class Contact(models.Model):
+    id = models.BigAutoField(primary_key=True)
     first_name = models.CharField(
         max_length=255,
         blank=False,
@@ -23,14 +24,14 @@ class Contact(models.Model):
         verbose_name="number",
     )
     address = models.TextField(
-        blank=False,
-        null=False,
+        blank=True,
+        null=True,
         verbose_name="address",
     )
     user = models.ForeignKey(
         to=settings.AUTH_USER_MODEL,
         blank=False,
-        null=True,
+        null=False,
         on_delete=models.CASCADE,
         related_name="user",
         verbose_name="user",

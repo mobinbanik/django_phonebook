@@ -6,13 +6,9 @@
     <style>
         table,
         th,
-        td {
+        td#t05 {
             border: 1px solid black;
             border-collapse: collapse;
-        }
-
-        th,
-        td {
             padding: 5px;
             text-align: left;
         }
@@ -36,17 +32,27 @@
             <th id="t02">Last Name</th>
             <th id="t02">Number</th>
             <th id="t02">Address</th>
+            <th id="t02">Actions</th>
         </tr>
     {% for contact in contacts %}
         <tr>
-            <th>{{ contact.first_name }}</th>
-            <th>{{ contact.last_name }}</th>
-            <th>{{ contact.number }}</th>
-            <th>{{ contact.address }}</th>
+            <td id="t05">{{ contact.first_name }}</td>
+            <td id="t05">{{ contact.last_name }}</td>
+            <td id="t05">{{ contact.number }}</td>
+            <td id="t05">{{ contact.address }}</td>
+            <td id="t05">
+                <table style="border-style:none;">
+                    <tr>
+                        <td><a href="{% url 'edit_contact' contact.id %}">edit</a></td>
+                    </tr>
+                    <tr>
+                        <td><a href="{% url 'delete_contact' contact.id %}">delete</a></td>
+                    </tr>
+                </table>
+            </td>
         </tr>
       {% endfor %}
     </table>
 </body>
 
-</html>
 {% endblock content%}
