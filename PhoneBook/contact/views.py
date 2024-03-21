@@ -3,18 +3,17 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Contact
 from .forms import ContactForm
+from django.contrib.auth.decorators import login_required
 
 
-def say_hello(request):
-    return HttpResponse(f"Hello {request.user}")
-
-
+@login_required
 def contact_view(request):
     user = request.user
     contacts = Contact.objects.filter(user=user).order_by('-id')
     return render(request, 'contact/contacts.html', {"contacts": contacts})
 
 
+@login_required
 def delete_contact(request, _id):
     contact = get_object_or_404(Contact, pk=_id)
     context = {'contact': contact}
@@ -28,6 +27,7 @@ def delete_contact(request, _id):
         return redirect('contacts')
 
 
+@login_required
 def add_contact(request):
     contact = Contact(user=request.user)
 
@@ -46,6 +46,7 @@ def add_contact(request):
             return render(request, 'contact/edit_new_contact.html', {'form': form})
 
 
+@login_required
 def edit_contact(request, _id):
     contact = get_object_or_404(Contact, id=_id)
 
