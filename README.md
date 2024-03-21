@@ -12,6 +12,7 @@ user can save their data in database.
 
 ## Debug:
 
-super user detail:
+### super user detail
 user: admin
+
 pass: admin
