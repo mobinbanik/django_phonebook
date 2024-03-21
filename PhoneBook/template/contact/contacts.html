@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<head>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px;
+            text-align: left;
+        }
+
+        table#t01 {
+            width: 100%;
+            background-color: #f2f2d1;
+        }
+        th#t02{
+            color: teal;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+<h1>Members</h1>
+<table style="width:100%" id="t01">
+        <tr>
+            <th id="t02">First Name</th>
+            <th id="t02">Last Name</th>
+            <th id="t02">Number</th>
+            <th id="t02">Address</th>
+        </tr>
+    {% for contact in contacts %}
+        <tr>
+            <th>{{ contact.first_name }}</th>
+            <th>{{ contact.last_name }}</th>
+            <th>{{ contact.number }}</th>
+            <th>{{ contact.address }}</th>
+        </tr>
+      {% endfor %}
+    </table>
+</body>
+
+</html>
+{% endblock content%}
