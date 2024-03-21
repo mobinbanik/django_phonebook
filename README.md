@@ -9,3 +9,9 @@ user can save their data in database.
 - User Authentication: Users can log in to manage their contacts securely.
 - Contact Management: Users can add, edit, and delete their contacts.
 - Data Privacy: Each user can only view and manage their own contacts, ensuring data privacy.
+
+## Debug:
+
+super user detail:
+user: admin
+pass: admin
